@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import users, admin, auth
+from app.api import users, admin, auth, destination
 from app.database.database import init_db
 
 app = FastAPI()
@@ -9,6 +9,7 @@ init_db()
 
 # Include routers
 app.include_router(users.router)
+app.include_router(destination.router)
 #app.include_router(admin.router)
 #app.include_router(auth.router)
 

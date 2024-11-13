@@ -5,6 +5,9 @@ from app.security.security import hash_password
 
 # Crear usuario
 def create_user_service(user: UsersCreate, session: Session):
+    db_user = session.exec(select(Users).where(Users.name == user.name))
+    if db_user:
+        raise HTTPException(status_code=400, detail="user's email already exist")
     hashed_password = hash_password(user.password)
     db_user = Users(name=user.name, mail=user.mail, hashed_password=hashed_password)
     session.add(db_user)

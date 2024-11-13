@@ -3,7 +3,7 @@ from sqlmodel import create_engine, SQLModel, Session
 
 # Database connection URL
 postgres_file_name = "fastapi"
-postgres_url = f"postgresql://postgres:12345678@192.168.20.14:5432/{postgres_file_name}"
+postgres_url = f"postgresql://postgres:12345678@localhost:5432/{postgres_file_name}"
 
 # Create database engine
 engine = create_engine(postgres_url, echo=True)
