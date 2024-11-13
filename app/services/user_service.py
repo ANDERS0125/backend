@@ -14,7 +14,6 @@ def create_user_service(user: UsersCreate, session: Session):
         last=user.last,
         email=user.email,
         phone=user.phone,
-        registration_date=user.registration_date,
         user_type=user.user_type,
         direccion=user.direccion,
         hashed_password=hashed_password
@@ -44,7 +43,6 @@ def update_user_service(user_id: int, user_data: UsersCreate, session: Session):
     user.last = user_data.last
     user.email = user_data.email
     user.phone = user_data.phone
-    user.registration_date = user_data.registration_date
     user.user_type = user_data.user_type
     user.direccion = user_data.direccion
     user.hashed_password = hash_password(user_data.password)

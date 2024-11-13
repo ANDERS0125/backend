@@ -12,13 +12,13 @@ class UsersBase(SQLModel):
     last: str
     email: str = Field(unique=True)
     phone: str
-    registration_date: date
     user_type: UserType
     direccion: str
 
 class Users(UsersBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
     hashed_password: str
+    registration_date: date = Field(default_factory=date.today)
 
 class UsersCreate(UsersBase):
     password: str

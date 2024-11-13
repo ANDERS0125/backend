@@ -8,4 +8,4 @@ class Comments(SQLModel, table=True):
     comment: str = Field(default="")
     review_date: date = Field(default_factory=date.today)
     destination_id: int = Field(default=None, foreign_key="destination.destination_id")
-    user_id: int = Field(default=None, foreign_key="usuario.user_id")
+    user_id: int = Field(default=None, foreign_key="users.id")
