@@ -1,13 +1,12 @@
-import hashlib
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(password: str) -> str:
-    # Convertimos la contraseña en bytes y generamos el hash sha256
-    hashed = hashlib.sha256(password.encode()).hexdigest()
-    return hashed
+    return pwd_context.hash(password)
 
 def check_password(password: str, hashed: str) -> bool:
-    # Calculamos el hash de la contraseña proporcionada y lo comparamos con el hash almacenado
-    return hash_password(password) == hashed
+    return pwd_context.verify(password, hashed)
 
 if __name__ == "__main__":
     hashed_password = hash_password("mi_contraseña_secreta")

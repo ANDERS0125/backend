@@ -6,6 +6,9 @@ class Destination(SQLModel, table=True):
     head_line: str = Field(default="")
     place_type: str = Field(default="")
     description: str = Field(default="")
+    maps_url_component: str = Field(default="")
     google_maps_url: str = Field(default="")
     full_address: str = Field(default="")
     status: str = Field(default="active")  # Expected values: 'active', 'disable'
+    # photos: List["Photo"] = Relationship(back_populates="destination")
+

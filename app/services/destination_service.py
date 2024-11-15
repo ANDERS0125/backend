@@ -25,6 +25,7 @@ def update_destination_service(destination_id: int, destination_data: Destinatio
     destination.name = destination_data.head_line
     destination.description = destination_data.description
     destination.placeType = destination_data.place_type
+    destination.maps_url_component = destination_data.maps_url_component
     destination.googleMaps_url = destination_data.google_maps_url
     destination.full_addres = destination_data.full_address
     session.add(destination)

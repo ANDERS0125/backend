@@ -9,7 +9,12 @@ def create_photo_service(photo: Photo, session: Session):
     session.commit()
     session.refresh(photo)
     return photo
-
+# Read first photo from destination
+def read_first_photo_service(destination_id: int, session: Session):
+    photo = session.exec(select(Photo).where(Photo.destination_id == destination_id)).first()
+    if not photo:
+        raise HTTPException(status_code=404, detail="Photo not found")
+    return photo
 # Read all photos
 def read_photos_service(session: Session):
     return session.exec(select(Photo)).all()
